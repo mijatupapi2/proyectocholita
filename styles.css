@@ -1,0 +1,405 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(to bottom, #87CEEB, #E0F7FA);
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.landscape {
+    position: relative;
+    width: 1200px;   /* Cambia el ancho */
+    height: 700px;   /* Cambia el alto */
+}.sun:hover {
+    animation: sunDance 1s ease infinite;
+    background: #FFC107;
+}
+
+/* CIELO */
+.sky {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    background: linear-gradient(to bottom, #87CEEB, #B3E5FC);
+}
+
+/* SOL */
+.sun {
+    position: absolute;
+    top: 50px;
+    right: 100px;
+    width: 80px;
+    height: 80px;
+    background: #FFD54F;
+    border-radius: 50%;
+}
+
+/* MONTAÑAS */
+.mountain {
+    position: absolute;
+    bottom: 40%;
+    
+}
+
+/* Montaña grande */
+.mountain-1 {
+    width: 0;
+    height: 0;
+    border-left: 300px solid transparent;   /* Lado izquierdo transparente */
+    border-right: 300px solid transparent;  /* Lado derecho transparente */
+    border-bottom: 400px solid #757269;     /* Base del triángulo, color de la montaña */
+    left: 0px;                            /* Posición horizontal */
+}
+
+
+/* Montaña mediana */
+.mountain-2 {
+    width: 0;
+    height: 0;
+    border-left: 200px solid transparent;
+    border-right: 200px solid transparent;
+    border-bottom: 300px solid #4d493f;
+    left: 500px;
+    bottom: 30%;
+}
+
+/* Montaña pequeña */
+.mountain-3 {
+    width: 0;
+    height: 0;
+    border-left: 200px solid transparent;
+    border-right: 200px solid transparent;
+    border-bottom: 250px solid #5a5852;
+    left: 800px;
+    bottom: 30%;
+}
+.mountain-1::after { /* Pico nevado */
+    content: "";
+    position: absolute;
+    left: -90px;         /* (600/2)-(60/2) = 270px */
+    top: 10px;          /* Ajusta para que quede justo en la cima */
+    width: 0;
+    height: 0;
+    border-left: 100px solid transparent;
+    border-right: 100px solid transparent;
+    border-bottom: 100px solid #fff;
+    z-index: 1;
+}    
+
+/* SUELO */
+.ground {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background: linear-gradient(to bottom, #853e24, #47190b);
+}
+
+/* CHOLITA */
+.cholita {
+    position: absolute;
+    bottom: 150px;
+    left: 100px;
+    animation: walk 35s linear infinite;
+}
+
+/* Cuerpo de la cholita */
+.body {
+    width: 40px;
+    height: 60px;
+    background: #d17255;
+    border-radius: 20px 20px 0 0;
+    position: relative;
+    z-index: 3;
+}
+
+.skirt {
+    width: 80px;
+    height: 50px;
+    background: #FF4081;
+    border-radius: 40px 40px 0 0;
+    position: absolute;
+    top: 50px;
+    left: -20px;
+    z-index: 2;
+}
+
+.hat {
+    width: 60px;
+    height: 20px;
+    background: #FFD54F;
+    border-radius: 30px 30px 0 0;
+    position: absolute;
+    top: -15px;
+    left: -10px;
+    z-index: 4;
+}
+
+.arm {
+    width: 15px;
+    height: 40px;
+    background: #FFB74D;
+    position: absolute;
+    top: 20px;
+}
+
+.arm-left {
+    left: -15px;
+    transform-origin: bottom right;
+    animation: armSwingLeft 0.5s ease-in-out infinite alternate;
+}
+
+.arm-right {
+    right: -15px;
+    transform-origin: bottom left;
+    animation: armSwingRight 0.5s ease-in-out infinite alternate;
+}
+
+.leg {
+    width: 15px;
+    height: 50px;
+    background: #8D6E63;
+    position: absolute;
+    top: 100px;
+}
+
+.leg-left {
+    left: 5px;
+    transform-origin: top center;
+    animation: legWalkLeft 0.5s ease-in-out infinite alternate;
+}
+
+.leg-right {
+    right: 5px;
+    transform-origin: top center;
+    animation: legWalkRight 0.5s ease-in-out infinite alternate;
+}
+
+/* NUBES */
+.cloud {
+    position: absolute;
+    background: rgb(5, 151, 219);
+    border-radius: 50px;
+    animation: cloudMove 20s linear infinite;
+}
+
+.cloud-1 {
+    width: 100px;
+    height: 40px;
+    top: 80px;
+    left: 50px;
+    animation-duration: 25s;
+}
+
+.cloud-2 {
+    width: 120px;
+    height: 50px;
+    top: 120px;
+    left: 300px;
+    animation-duration: 30s;
+}
+
+.cloud-3 {
+    width: 80px;
+    height: 35px;
+    top: 60px;
+    left: 600px;
+    animation-duration: 35s;
+}
+
+/* OVEJAS */
+.sheep {
+    position: absolute;
+    bottom: 160px;
+    left: 0px;
+    z-index: 10;
+    animation: sheepWalk 18s linear infinite;
+}
+
+.sheep-2 {
+    bottom: 120px;
+    animation-delay: 3s; /* Para que no caminen juntas */
+}
+
+.sheep-body {
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    border-radius: 0;      /* Elimina las esquinas redondeadas */
+    position: absolute;
+    left: 0;
+    top: 0;
+    box-shadow: 0 0 10px #ccc;
+}
+
+.sheep-head {
+    width: 25px;
+    height: 25px;
+    background: #eee;
+    border-radius: 50%;
+    position: absolute;
+    left: 45px;
+    top: 10px;
+    box-shadow: 0 0 5px #bbb;
+}
+
+.sheep-ear {
+    width: 10px;
+    height: 6px;
+    background: #ddd;
+    border-radius: 50%;
+    position: absolute;
+    top: 15px;
+}
+
+.sheep-ear-left {
+    left: 55px;
+    transform: rotate(-20deg);
+}
+.sheep-ear-right {
+    left: 65px;
+    transform: rotate(20deg);
+}
+
+.sheep-leg {
+    width: 6px;
+    height: 18px;
+    background: #888;
+    position: absolute;
+    top: 35px;
+    border-radius: 3px;
+}
+
+.sheep-leg-1 { left: 10px; }
+.sheep-leg-2 { left: 22px; }
+.sheep-leg-3 { left: 34px; }
+.sheep-leg-4 { left: 46px; }
+
+@keyframes walk {
+    0% { transform: translateX(-100px); }
+    100% { transform: translateX(900px); }
+}
+
+@keyframes armSwingLeft {
+    0% { transform: rotate(-20deg); }
+    100% { transform: rotate(20deg); }
+}
+
+@keyframes armSwingRight {
+    0% { transform: rotate(20deg); }
+    100% { transform: rotate(-20deg); }
+}
+
+@keyframes legWalkLeft {
+    0% { transform: rotate(-15deg); }
+    100% { transform: rotate(15deg); }
+}
+
+@keyframes legWalkRight {
+    0% { transform: rotate(15deg); }
+    100% { transform: rotate(-15deg); }
+}
+
+@keyframes sunGlow {
+    0% { box-shadow: 0 0 30px #FFB300; }
+    100% { box-shadow: 0 0 60px #FF8F00; }
+}
+
+@keyframes cloudMove {
+    0% { transform: translateX(-100px); }
+    100% { transform: translateX(900px); }
+}
+
+@keyframes sheepWalk {
+    0% { left: 0px; }
+    100% { left: 900px; }
+}
+
+/* EFECTOS HOVER */
+.cholita:hover {
+    animation-play-state: paused;
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+.sun:hover {
+    animation: sunDance 1s ease infinite;
+    background: #FFC107;
+}
+
+@keyframes sunDance {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-10px) rotate(5deg); }
+    50% { transform: translateY(0) rotate(0deg); }
+    75% { transform: translateY(-10px) rotate(-5deg); }
+}
+
+.mountain-1:hover {
+    background: linear-gradient(to bottom, #6B8A9A, #455A64);
+    transition: background 0.5s ease;
+}
+
+/* CASA */
+.house {
+    position: absolute;
+    left: 950px;   /* Ajusta la posición horizontal */
+    bottom: 180px; /* Ajusta la posición vertical */
+    z-index: 5;    /* Detrás de la cholita y ovejas */
+}
+
+/* Cuerpo cuadrado */
+.house-body {
+    width: 140px;
+    height: 140px;
+    background: #ffe4b5;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    border: 2px solid #b8860b;
+}
+
+/* Techo triangular */
+.house-roof {
+    width: 0;
+    height: 0;
+    border-left: 80px solid transparent;
+    border-right: 80px solid transparent;
+    border-bottom: 80px solid #b22222;
+    position: absolute;
+    left: -5px;
+    bottom: 140px;
+}
+
+/* Ventana redonda */
+.house-window {
+    width: 40px;
+    height: 40px;
+    background: #87ceeb;
+    border-radius: 50%;
+    position: absolute;
+    left: 80px;
+    bottom: 80px;
+    border: 4px solid #4682b4;
+}
+
+/* Puerta rectangular */
+.house-door {
+    width: 36px;
+    height: 64px;
+    background: #8b4513;
+    position: absolute;
+    left: 52px;
+    bottom: 0;
+    border: 2px solid #654321;
+}
+
